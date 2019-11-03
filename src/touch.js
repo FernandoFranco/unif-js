@@ -21,9 +21,9 @@ export default class WheelEvents {
   onTouchEnd($event) {
     $event.preventDefault();
     if (this.startY > this.lastY) {
-      this.scrollToNext();
+      this.sections.scrollNextSection();
     } else if (this.startY < this.lastY) {
-      this.scrollToPrevious();
+      this.sections.scrollPreviousSection();
     }
   }
 
