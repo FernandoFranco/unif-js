@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>UnifJS</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+      html {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      h1 {
+        margin: 0;
+        color: #fff;
+      }
+
+      .unif-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body class="unif-container">
+    <div id="home" class="unif-section" style="background: #2196F3">
+      <h1>Page 1</h1>
+    </div>
+    <div class="unif-section" style="background: #4CAF50">
+      <h1>Page 2</h1>
+    </div>
+    <div class="unif-section" style="background: #F44336">
+      <h1>Page 3</h1>
+    </div>
+
+    <script src="./unif.js"></script>
+    <script>
+      var unif = new UnifJS('body');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "unif-js",
+  "version": "1.0.0",
+  "description": "UnifJS is a solution similar to FullPage",
+  "main": "/src/index.js",
+  "scripts": {
+    "serve": "webpack-dev-server -d",
+    "build": "webpack"
+  },
+  "repository": "https://github.com/FernandoFranco/unif-js.git",
+  "author": "Fernando Franco <atr.franco@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
