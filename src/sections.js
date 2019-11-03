@@ -6,11 +6,12 @@ export default class list {
     if (!this.container) throw new Error('Container not found');
 
     this.onScroll = config.onScroll;
+    this.sectionQuerySelector = config.sectionQuerySelector;
     this.load();
   }
 
   load() {
-    this.list = Array.from(this.container.querySelectorAll('.unif-section'));
+    this.list = Array.from(this.container.querySelectorAll(this.sectionQuerySelector));
     this.list.forEach((section, index) => {
       section.dataset.unif = section.dataset.unif || section.id ||`page${index + 1}`;
       section.id = `section-${index + 1}`;
