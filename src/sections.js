@@ -1,17 +1,18 @@
 import { timingSafeEqual } from "crypto";
 
 export default class list {
-  constructor(containerQuerySelector, config) {
-    this.container = document.querySelector(containerQuerySelector);
+  constructor(selector, config) {
+    this.container = selector;
+    if (typeof selector === 'string') this.container = document.querySelector(selector);
     if (!this.container) throw new Error('Container not found');
 
     this.onScroll = config.onScroll;
-    this.sectionQuerySelector = config.sectionQuerySelector;
+    this.sectionSelector = config.sectionSelector;
     this.load();
   }
 
   load() {
-    this.list = Array.from(this.container.querySelectorAll(this.sectionQuerySelector));
+    this.list = Array.from(this.container.querySelectorAll(this.sectionSelector));
     this.list.forEach((section, index) => {
       section.dataset.unif = section.dataset.unif || section.id ||`page${index + 1}`;
       section.id = `section-${index + 1}`;

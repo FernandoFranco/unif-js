@@ -5,9 +5,9 @@ import Touch from './touch';
 import Hash from './hash';
 
 class UnifJS {
-  constructor(querySelector, config = {}) {
-    this.sections = new Sections(querySelector, {
-      sectionQuerySelector: config.sectionQuerySelector || '.unif-section',
+  constructor(selector, config = {}) {
+    this.sections = new Sections(selector, {
+      sectionSelector: config.sectionSelector || '.unif-section',
       onScroll: ({ to }) => {
         if (this.hash && to) this.hash.setHashBySection(to);
       },
