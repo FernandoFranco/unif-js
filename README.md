@@ -1,6 +1,16 @@
 # unif-js
 UnifJS is a similar FullPage solution
 
+# Install
+
+```cmd
+// NPM
+npm install unif-js --save
+
+// YARN
+yarn add unif-js
+```
+
 # Basic use
 
 Simple HTML to use unif.js
@@ -61,7 +71,7 @@ Simple HTML to use unif.js
 ```javascript
 var containerQuerySelector = 'body';
 var configObject = {
-  sectionQuerySelector: '.unif-section', // Change section query selector
+  sectionSelector: '.unif-section', // Change section query selector
   disableHash: false, // Disable hash watch and change in url
   disableWheel: false, // Disable wheel events
   disableTouch: false, // Disable touch events
