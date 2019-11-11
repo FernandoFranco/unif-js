@@ -30,11 +30,13 @@ class UnifJS {
     this.sections.load();
     this.events.forEach(event => event.start());
 
-    setTimeout(() => {
-      const section = this.hash.getSectionByHash();
-      if (section) this.sections.scrollTo(section);
-      else this.sections.scrollToFirst();
-    }, 300);
+    if (!config.disableHash) {
+      setTimeout(() => {
+        const section = this.hash.getSectionByHash();
+        if (section) this.sections.scrollTo(section);
+        else this.sections.scrollToFirst();
+      }, 300);
+    }
   }
 
   stop() {
