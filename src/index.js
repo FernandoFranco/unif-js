@@ -6,6 +6,7 @@ import Hash from './hash';
 
 class UnifJS {
   constructor(selector, config = {}) {
+    this.config = config;
     this.sections = new Sections(selector, {
       sectionSelector: config.sectionSelector || '.unif-section',
       onScroll: ({ to }) => {
@@ -30,7 +31,7 @@ class UnifJS {
     this.sections.load();
     this.events.forEach(event => event.start());
 
-    if (!config.disableHash) {
+    if (!this.config.disableHash) {
       setTimeout(() => {
         const section = this.hash.getSectionByHash();
         if (section) this.sections.scrollTo(section);
@@ -46,6 +47,10 @@ class UnifJS {
   reload() {
     this.stop();
     setTimeout(() => { this.start(); }, 200);
+  }
+
+  setConfig(attr, value) {
+    this.config[attr] = value;
   }
 }
 
