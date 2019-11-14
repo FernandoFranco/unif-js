@@ -80,6 +80,7 @@ var configObject = {
   disablePageKeys: false, // Disable page up and down keys
   disableSpaceBarKey: false, // Disable space bar key
   disableHomeEndKeys: false, // Disable home and end keys
+  onScroll: function () {}, // On Scroll event handler
 };
 
 new UnifJS(containerQuerySelector, configObject);
@@ -97,4 +98,12 @@ setTimeout(function () {
 setTimeout(function () {
   unif.start(); // Start all events of unif
 }, 10000);
+
+setTimeout(function () {
+  unif.setConfig('configKey', configValue); // Update the config key
+}, 15000);
+
+setTimeout(function () {
+  unif.setSession(sessionIdentifier); // Session identifier like index or id
+}, 20000);
 ```

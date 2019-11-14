@@ -1,22 +1,26 @@
 export default class Hash {
-  constructor(sections) {
-    this.sections = sections;
+  constructor(sessions) {
+    this.sessions = sessions;
 
     this.hashchange = $event => this.onHashChange($event);
   }
 
-  setHashBySection(section) {
-    window.location.hash = section.dataset.unif;
+  getHashBySession(session) {
+    return (session && session.dataset.unif) || null;
   }
 
-  getSectionByHash() {
-    const hash = (location.hash || '').replace(/^#/, '');
-    return this.sections.list.find(({ dataset }) => dataset.unif === hash);
+  setHashBySection(session) {
+    window.location.hash = session.dataset.unif;
+  }
+
+  getSectionByHash(hash) {
+    const unif = (hash || location.hash || '').replace(/^#/, '');
+    return this.sessions.list.find(({ dataset }) => dataset.unif === unif);
   }
 
   onHashChange() {
-    const section = this.getSectionByHash();
-    if (section) this.sections.scrollTo(section);
+    const session = this.getSectionByHash();
+    if (session) this.sessions.scrollTo(section);
   }
 
   start() {

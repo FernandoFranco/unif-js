@@ -9,8 +9,14 @@ class UnifJS {
     this.config = config;
     this.sections = new Sections(selector, {
       sectionSelector: config.sectionSelector || '.unif-section',
-      onScroll: ({ to }) => {
-        if (this.hash && to) this.hash.setHashBySection(to);
+      onScroll: ({ from, to }) => {
+        if (!config.disableHash && this.hash && to) this.hash.setHashBySection(to);
+        if (config.onScroll instanceof Function) {
+          config.onScroll({
+            from: this.hash.getHashBySession(from),
+            to: this.hash.getHashBySession(to),
+          });
+        }
       },
     });
 
@@ -19,10 +25,8 @@ class UnifJS {
     if (!config.disableKeys) this.events.push(new Keys(this.sections, config));
     if (!config.disableTouch) this.events.push(new Touch(this.sections));
 
-    if (!config.disableHash) {
-      this.hash = new Hash(this.sections);
-      this.events.push(this.hash);
-    }
+    this.hash = new Hash(this.sections);
+    if (!config.disableHash) this.events.push(this.hash);
 
     this.start();
   }
@@ -51,6 +55,18 @@ class UnifJS {
 
   setConfig(attr, value) {
     this.config[attr] = value;
+  }
+
+  setSession(sessionIdentifier) {
+    let session = null;
+    if (typeof sessionIdentifier === 'number') {
+      session = this.sections.list[sessionIdentifier];
+    } else if (typeof sessionIdentifier === 'string') {
+      session = this.hash.getSectionByHash(sessionIdentifier);
+    }
+
+    if (!session) return;
+    this.sections.scrollTo(session);
   }
 }
 
