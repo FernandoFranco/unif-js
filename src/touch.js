@@ -1,6 +1,6 @@
 export default class WheelEvents {
-  constructor(sections) {
-    this.sections = sections;
+  constructor(sessions) {
+    this.sessions = sessions;
 
     this.touchstart = $event => this.onTouchStart($event);
     this.touchmove = $event => this.onTouchMove($event);
@@ -21,9 +21,9 @@ export default class WheelEvents {
   onTouchEnd($event) {
     $event.preventDefault();
     if (this.startY > this.lastY) {
-      this.sections.scrollNextSection();
+      this.sessions.scrollNextSession();
     } else if (this.startY < this.lastY) {
-      this.sections.scrollPreviousSection();
+      this.sessions.scrollPreviousSession();
     }
   }
 

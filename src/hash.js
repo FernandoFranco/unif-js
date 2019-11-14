@@ -9,18 +9,18 @@ export default class Hash {
     return (session && session.dataset.unif) || null;
   }
 
-  setHashBySection(session) {
+  setHashBySession(session) {
     window.location.hash = session.dataset.unif;
   }
 
-  getSectionByHash(hash) {
+  getSessionByHash(hash) {
     const unif = (hash || location.hash || '').replace(/^#/, '');
     return this.sessions.list.find(({ dataset }) => dataset.unif === unif);
   }
 
   onHashChange() {
-    const session = this.getSectionByHash();
-    if (session) this.sessions.scrollTo(section);
+    const session = this.getSessionByHash();
+    if (session) this.sessions.scrollTo(session);
   }
 
   start() {

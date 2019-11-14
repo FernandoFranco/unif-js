@@ -1,14 +1,14 @@
 export default class WheelEvents {
-  constructor(sections) {
-    this.sections = sections;
+  constructor(sessions) {
+    this.sessions = sessions;
 
     this.wheelEvent = $event => this.onWheel($event);
   }
 
   onWheel($event) {
     $event.preventDefault();
-    if ($event.deltaY > 0) this.sections.scrollNextSection();
-    if ($event.deltaY < 0) this.sections.scrollPreviousSection();
+    if ($event.deltaY > 0) this.sessions.scrollNextSession();
+    if ($event.deltaY < 0) this.sessions.scrollPreviousSession();
   }
 
   start() {

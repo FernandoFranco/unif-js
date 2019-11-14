@@ -1,4 +1,4 @@
-import Sections from './sections';
+import Sessions from './sessions';
 import Wheel from './wheel';
 import Keys from './keys';
 import Touch from './touch';
@@ -7,10 +7,10 @@ import Hash from './hash';
 class UnifJS {
   constructor(selector, config = {}) {
     this.config = config;
-    this.sections = new Sections(selector, {
-      sectionSelector: config.sectionSelector || '.unif-section',
+    this.sessions = new Sessions(selector, {
+      sessionSelector: config.sessionSelector || '.unif-session',
       onScroll: ({ from, to }) => {
-        if (!config.disableHash && this.hash && to) this.hash.setHashBySection(to);
+        if (!config.disableHash && this.hash && to) this.hash.setHashBySession(to);
         if (config.onScroll instanceof Function) {
           config.onScroll({
             from: this.hash.getHashBySession(from),
@@ -21,25 +21,25 @@ class UnifJS {
     });
 
     this.events = [];
-    if (!config.disableWheel) this.events.push(new Wheel(this.sections));
-    if (!config.disableKeys) this.events.push(new Keys(this.sections, config));
-    if (!config.disableTouch) this.events.push(new Touch(this.sections));
+    if (!config.disableWheel) this.events.push(new Wheel(this.sessions));
+    if (!config.disableKeys) this.events.push(new Keys(this.sessions, config));
+    if (!config.disableTouch) this.events.push(new Touch(this.sessions));
 
-    this.hash = new Hash(this.sections);
+    this.hash = new Hash(this.sessions);
     if (!config.disableHash) this.events.push(this.hash);
 
     this.start();
   }
 
   start() {
-    this.sections.load();
+    this.sessions.load();
     this.events.forEach(event => event.start());
 
     if (!this.config.disableHash) {
       setTimeout(() => {
-        const section = this.hash.getSectionByHash();
-        if (section) this.sections.scrollTo(section);
-        else this.sections.scrollToFirst();
+        const session = this.hash.getSessionByHash();
+        if (session) this.sessions.scrollTo(session);
+        else this.sessions.scrollToFirst();
       }, 300);
     }
   }
@@ -60,13 +60,13 @@ class UnifJS {
   setSession(sessionIdentifier) {
     let session = null;
     if (typeof sessionIdentifier === 'number') {
-      session = this.sections.list[sessionIdentifier];
+      session = this.sessions.list[sessionIdentifier];
     } else if (typeof sessionIdentifier === 'string') {
-      session = this.hash.getSectionByHash(sessionIdentifier);
+      session = this.hash.getSessionByHash(sessionIdentifier);
     }
 
     if (!session) return;
-    this.sections.scrollTo(session);
+    this.sessions.scrollTo(session);
   }
 }
 

@@ -1,6 +1,6 @@
 export default class WheelEvents {
-  constructor(sections, config) {
-    this.sections = sections;
+  constructor(sessions, config) {
+    this.sessions = sessions;
 
     this.keyArrowUp = 38;
     this.keyArrowDown = 40;
@@ -44,10 +44,10 @@ export default class WheelEvents {
     if (this.keys.includes($event.keyCode)) {
       $event.preventDefault();
 
-      if (this.upKeys.includes($event.keyCode)) this.sections.scrollPreviousSection();
-      else if (this.downKeys.includes($event.keyCode)) this.sections.scrollNextSection();
-      else if ($event.keyCode === this.keyHome) this.sections.scrollToFirst();
-      else if ($event.keyCode === this.keyEnd) this.sections.scrollToLast();
+      if (this.upKeys.includes($event.keyCode)) this.sessions.scrollPreviousSession();
+      else if (this.downKeys.includes($event.keyCode)) this.sessions.scrollNextSession();
+      else if ($event.keyCode === this.keyHome) this.sessions.scrollToFirst();
+      else if ($event.keyCode === this.keyEnd) this.sessions.scrollToLast();
     }
   }
 

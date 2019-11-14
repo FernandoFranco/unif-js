@@ -39,7 +39,7 @@ Simple HTML to use unif.js
         color: #fff;
       }
 
-      .unif-section {
+      .unif-session {
         height: 100%;
         display: flex;
         align-items: center;
@@ -48,13 +48,13 @@ Simple HTML to use unif.js
     </style>
   </head>
   <body>
-    <div id="home" class="unif-section" style="background: #2196F3">
+    <div id="home" class="unif-session" style="background: #2196F3">
       <h1>Page 1</h1>
     </div>
-    <div class="unif-section" style="background: #4CAF50">
+    <div class="unif-session" style="background: #4CAF50">
       <h1>Page 2</h1>
     </div>
-    <div class="unif-section" style="background: #F44336">
+    <div class="unif-session" style="background: #F44336">
       <h1>Page 3</h1>
     </div>
 
@@ -71,7 +71,7 @@ Simple HTML to use unif.js
 ```javascript
 var containerQuerySelector = 'body';
 var configObject = {
-  sectionSelector: '.unif-section', // Change section query selector
+  sessionSelector: '.unif-session', // Change session query selector
   disableHash: false, // Disable hash watch and change in url
   disableWheel: false, // Disable wheel events
   disableTouch: false, // Disable touch events

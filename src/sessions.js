@@ -7,36 +7,36 @@ export default class list {
     if (!this.container) throw new Error('Container not found');
 
     this.onScroll = config.onScroll;
-    this.sectionSelector = config.sectionSelector;
+    this.sessionSelector = config.sessionSelector;
     this.load();
   }
 
   load() {
-    this.list = Array.from(this.container.querySelectorAll(this.sectionSelector));
-    this.list.forEach((section, index) => {
-      section.dataset.unif = section.dataset.unif || section.id ||`page${index + 1}`;
-      section.id = `section-${index + 1}`;
+    this.list = Array.from(this.container.querySelectorAll(this.sessionSelector));
+    this.list.forEach((session, index) => {
+      session.dataset.unif = session.dataset.unif || session.id ||`page${index + 1}`;
+      session.id = `session-${index + 1}`;
     });
   }
 
-  scrollTo(section) {
+  scrollTo(session) {
     const timer = (new Date()).getTime();
     if ((timer - (this.timer || 0)) < 200) return;
     this.timer = timer;
 
-    this.onScroll({ from: this.current, to: section });
+    this.onScroll({ from: this.current, to: session });
 
-    this.current = section;
-    section.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    this.current = session;
+    session.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
-  scrollNextSection() {
+  scrollNextSession() {
     const nextIndex = this.list.indexOf(this.current) + 1;
     if (nextIndex === this.list.length) return;
     this.scrollTo(this.list[nextIndex]);
   }
 
-  scrollPreviousSection() {
+  scrollPreviousSession() {
     const previousIndex = this.list.indexOf(this.current) - 1;
     if (previousIndex < 0) return;
     this.scrollTo(this.list[previousIndex]);
