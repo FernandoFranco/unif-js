@@ -1,5 +1,5 @@
 export default class WheelEvents {
-  constructor(sessions) {
+  constructor(sessions, config) {
     this.sessions = sessions;
     this.minDiff = Number(config.minTouchMove || 50);
 

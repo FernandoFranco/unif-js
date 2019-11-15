@@ -1,6 +1,6 @@
 {
   "name": "unif-js",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "UnifJS is a solution similar to FullPage",
   "main": "/src/index.js",
   "scripts": {
