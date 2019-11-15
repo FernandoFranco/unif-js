@@ -9,7 +9,6 @@ export default class WheelEvents {
   }
 
   onTouchStart($event) {
-    $event.preventDefault();
     this.startY = $event.touches[0].screenY;
   }
 
@@ -19,7 +18,6 @@ export default class WheelEvents {
   }
 
   onTouchEnd($event) {
-    $event.preventDefault();
     if (this.startY > this.lastY) {
       this.sessions.scrollNextSession();
     } else if (this.startY < this.lastY) {
