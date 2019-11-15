@@ -80,6 +80,7 @@ var configObject = {
   disablePageKeys: false, // Disable page up and down keys
   disableSpaceBarKey: false, // Disable space bar key
   disableHomeEndKeys: false, // Disable home and end keys
+  minTouchMove: 50, // Min touch move diff to scroll
   onScroll: function () {}, // On Scroll event handler
 };
 

@@ -1,11 +1,14 @@
 export default class WheelEvents {
   constructor(sessions) {
     this.sessions = sessions;
+    this.minDiff = Number(config.minTouchMove || 50);
 
     this.touchstart = $event => this.onTouchStart($event);
     this.touchmove = $event => this.onTouchMove($event);
     this.touchend = $event => this.onTouchEnd($event);
     this.touchcancel = $event => this.onTouchCancel($event);
+
+    this.resetValues();
   }
 
   onTouchStart($event) {
@@ -18,17 +21,26 @@ export default class WheelEvents {
   }
 
   onTouchEnd($event) {
-    if (this.startY > this.lastY) {
+    const { startY, lastY } = this;
+    this.resetValues();
+
+    if (!startY || !lastY || (Math.abs(startY - lastY) < this.minDiff)) return;
+
+    if (startY > lastY) {
       this.sessions.scrollNextSession();
-    } else if (this.startY < this.lastY) {
+    } else if (startY < lastY) {
       this.sessions.scrollPreviousSession();
     }
   }
 
   onTouchCancel($event) {
     $event.preventDefault();
-    this.startY = 0;
-    this.lastY = 0;
+    this.resetValues();
+  }
+
+  resetValues() {
+    this.startY = null;
+    this.lastY = null;
   }
 
   start() {

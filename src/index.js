@@ -23,7 +23,7 @@ class UnifJS {
     this.events = [];
     if (!config.disableWheel) this.events.push(new Wheel(this.sessions));
     if (!config.disableKeys) this.events.push(new Keys(this.sessions, config));
-    if (!config.disableTouch) this.events.push(new Touch(this.sessions));
+    if (!config.disableTouch) this.events.push(new Touch(this.sessions, config));
 
     this.hash = new Hash(this.sessions);
     if (!config.disableHash) this.events.push(this.hash);
