@@ -42,7 +42,7 @@ export default class WheelEvents {
 
   onKeyDown($event) {
     const activeElement = document.activeElement.tagName.toUpperCase();
-    if (['INPUT', 'A', 'BUTTON', 'SELECT'].includes(activeElement)) return;
+    if (['INPUT', 'TEXTAREA', 'A', 'BUTTON', 'SELECT'].includes(activeElement)) return;
     
     if (this.keys.includes($event.keyCode)) {
       $event.preventDefault();
